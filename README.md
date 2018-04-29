@@ -69,9 +69,9 @@ The configuration file is a json file, which looks like this:
 ```python
 {
     "model" : {
-        "architecture":         "Full Yolo",    # "Tiny Yolo" or "Full Yolo" or "MobileNet" or "SqueezeNet" or "Inception3"
+        "backend":             "Full Yolo",    # "Tiny Yolo" or "Full Yolo" or "MobileNet" or "SqueezeNet" or "Inception3"
         "input_size":           416,
-        "anchors":              [0.57273, 0.677385, 1.87446, 2.06253, 3.33843, 5.47434, 7.88282, 3.52778, 9.77052, 9.16828],
+        "anchors":              [3.76,4.70, 5.32,7.64, 6.44,11.35, 9.03,10.83, 11.69,11.72],
         "max_box_per_image":    10,        
         "labels":               ["raccoon"]
     },
@@ -84,7 +84,7 @@ The configuration file is a json file, which looks like this:
         "pretrained_weights":   "",             # specify the path of the pretrained weights, but it's fine to start from scratch
         "batch_size":           16,             # the number of images to read in each batch
         "learning_rate":        1e-4,           # the base learning rate of the default Adam rate scheduler
-        "nb_epoch":             50,             # number of epoches
+        "nb_epochs":            50,             # number of epoches
         "warmup_epochs":        3,              # the number of initial epochs during which the sizes of the 5 boxes in each cell is forced to match the sizes of the 5 anchors, this trick seems to improve precision emperically
 
         "object_scale":         5.0 ,           # determine how much to penalize wrong prediction of confidence of object predictors
@@ -92,7 +92,8 @@ The configuration file is a json file, which looks like this:
         "coord_scale":          1.0,            # determine how much to penalize wrong position and size predictions (x, y, w, h)
         "class_scale":          1.0,            # determine how much to penalize wrong class prediction
 
-        "debug":                true            # turn on/off the line that prints current confidence, position, size, class losses and recall
+        "debug":                true,           # turn on/off the line that prints current confidence, position, size, class losses and recall
+        "saved_weights_name":   "full_yolo_raccoon.h5",
     },
 
     "valid": {
